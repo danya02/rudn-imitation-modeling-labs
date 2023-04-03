@@ -1,0 +1,126 @@
+
+
+              GPSS World Simulation Report - Untitled Model 1.1.11
+
+
+                   Monday, April 03, 2023 21:51:40  
+
+           START TIME           END TIME  BLOCKS  FACILITIES  STORAGES
+                0.000         100000.000    52        5          0
+
+
+              NAME                       VALUE  
+          N1Q                         10003.000
+          N1W                         10004.000
+          N2Q                         10009.000
+          N2W                         10010.000
+          N3Q                         10001.000
+          N3W                         10002.000
+          N4Q                         10005.000
+          N4W                         10006.000
+          N5Q                         10007.000
+          N5W                         10008.000
+          NODE1                           3.000
+          NODE2                          13.000
+          NODE3                          23.000
+          NODE4                          33.000
+          NODE5                          43.000
+          SRC                         10000.000
+          SRC1ENT                     10015.000
+          SRC2ENT                     10013.000
+          SRC3ENT                     10011.000
+          SRC4ENT                     10012.000
+          SRC5ENT                     10014.000
+
+
+ LABEL              LOC  BLOCK TYPE     ENTRY COUNT CURRENT COUNT RETRY
+                    1    GENERATE            10             0       0
+                    2    ASSIGN              10             0       0
+NODE1               3    QUEUE            19979             3       0
+                    4    SEIZE            19976             0       0
+                    5    DEPART           19976             0       0
+                    6    ADVANCE          19976             1       0
+                    7    RELEASE          19975             0       0
+                    8    TEST             19975             0       0
+                    9    SAVEVALUE         4000             0       0
+                   10    TRANSFER          4000             0       0
+                   11    GENERATE            10             0       0
+                   12    ASSIGN              10             0       0
+NODE2              13    QUEUE            19985             2       0
+                   14    SEIZE            19983             0       0
+                   15    DEPART           19983             0       0
+                   16    ADVANCE          19983             1       0
+                   17    RELEASE          19982             0       0
+                   18    TEST             19982             0       0
+                   19    SAVEVALUE         4000             0       0
+                   20    TRANSFER          4000             0       0
+                   21    GENERATE            10             0       0
+                   22    ASSIGN              10             0       0
+NODE3              23    QUEUE            19992             7       0
+                   24    SEIZE            19985             0       0
+                   25    DEPART           19985             0       0
+                   26    ADVANCE          19985             1       0
+                   27    RELEASE          19984             0       0
+                   28    TEST             19984             0       0
+                   29    SAVEVALUE         4000             0       0
+                   30    TRANSFER          4000             0       0
+                   31    GENERATE            10             0       0
+                   32    ASSIGN              10             0       0
+NODE4              33    QUEUE            19994            24       0
+                   34    SEIZE            19970             0       0
+                   35    DEPART           19970             0       0
+                   36    ADVANCE          19970             1       0
+                   37    RELEASE          19969             0       0
+                   38    TEST             19969             0       0
+                   39    SAVEVALUE         4000             0       0
+                   40    TRANSFER          4000             0       0
+                   41    GENERATE            10             0       0
+                   42    ASSIGN              10             0       0
+NODE5              43    QUEUE            19979             9       0
+                   44    SEIZE            19970             0       0
+                   45    DEPART           19970             0       0
+                   46    ADVANCE          19970             1       0
+                   47    RELEASE          19969             0       0
+                   48    TEST             19969             0       0
+                   49    SAVEVALUE         4000             0       0
+                   50    TRANSFER          4000             0       0
+                   51    GENERATE          1000             0       0
+                   52    TERMINATE         1000             0       0
+
+
+FACILITY         ENTRIES  UTIL.   AVE. TIME AVAIL. OWNER PEND INTER RETRY DELAY
+ N3W              19985    1.000       5.001  1       26    0    0     0      7
+ N1W              19976    0.998       4.997  1        3    0    0     0      3
+ N4W              19970    0.998       4.999  1       45    0    0     0     24
+ N5W              19970    0.998       4.998  1       42    0    0     0      9
+ N2W              19983    1.000       5.004  1       15    0    0     0      2
+
+
+QUEUE              MAX CONT. ENTRY ENTRY(0) AVE.CONT. AVE.TIME   AVE.(-0) RETRY
+ N3Q                25    7  19992     86    11.679     58.419     58.671   0
+ N1Q                19    3  19979    313     6.404     32.054     32.564   0
+ N4Q                31   24  19994    293     8.495     42.487     43.118   0
+ N5Q                16    9  19979    361     5.002     25.038     25.499   0
+ N2Q                36    2  19985     12    13.423     67.165     67.205   0
+
+
+SAVEVALUE               RETRY       VALUE
+ SRC3ENT                  0       4000.000                            
+ SRC4ENT                  0       4000.000                            
+ SRC2ENT                  0       4000.000                            
+ SRC5ENT                  0       4000.000                            
+ SRC1ENT                  0       4000.000                            
+
+
+FEC XN   PRI         BDT      ASSEM  CURRENT  NEXT  PARAMETER    VALUE
+    45    0      100003.033     45     36     37
+                                                    SRC           3.000
+     3    0      100003.119      3      6      7
+                                                    SRC           3.000
+    42    0      100003.673     42     46     47
+                                                    SRC           4.000
+    26    0      100003.745     26     26     27
+                                                    SRC           5.000
+    15    0      100003.955     15     16     17
+                                                    SRC           4.000
+  1051    0      100100.000   1051      0     51

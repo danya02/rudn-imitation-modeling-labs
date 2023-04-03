@@ -1,0 +1,61 @@
+	GENERATE 1,,,10
+	ASSIGN src,1
+node1	QUEUE n1q
+	SEIZE n1w
+	DEPART n1q
+	ADVANCE 5,1
+	RELEASE n1w
+	TEST E P$src,1,node2
+	SAVEVALUE src1ent+,1
+	TRANSFER ,node2
+
+	GENERATE 1,,,10
+	ASSIGN src,2
+node2	QUEUE n2q
+	SEIZE n2w
+	DEPART n2q
+	ADVANCE 5,1
+	RELEASE n2w
+	TEST E P$src,2,node3
+	SAVEVALUE src2ent+,1
+	TRANSFER ,node3
+
+
+	GENERATE 1,,,10
+	ASSIGN src,3
+node3	QUEUE n3q
+	SEIZE n3w
+	DEPART n3q
+	ADVANCE 5,1
+	RELEASE n3w
+	TEST E P$src,3,node4
+	SAVEVALUE src3ent+,1
+	TRANSFER ,node4
+
+
+	GENERATE 1,,,10
+	ASSIGN src,4
+node4	QUEUE n4q
+	SEIZE n4w
+	DEPART n4q
+	ADVANCE 5,1
+	RELEASE n4w
+	TEST E P$src,4,node5
+	SAVEVALUE src4ent+,1
+	TRANSFER ,node5
+
+
+	GENERATE 1,,,10
+	ASSIGN src,5
+node5	QUEUE n5q
+	SEIZE n5w
+	DEPART n5q
+	ADVANCE 5,1
+	RELEASE n5w
+	TEST E P$src,5,node1
+	SAVEVALUE src5ent+,1
+	TRANSFER ,node1
+
+
+GENERATE 100
+TERMINATE 1
