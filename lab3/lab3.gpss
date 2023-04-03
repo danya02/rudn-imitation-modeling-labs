@@ -1,0 +1,55 @@
+INITIAL X$turbomode,0
+packet_time	TABLE P$duration,0,0.5,100
+proc_time	TABLE P$processing_time,0,0.5,100
+
+
+	GENERATE 6,3
+	SAVEVALUE created+,1
+	ASSIGN starttime,AC1
+chan1ent	QUEUE chan1q
+	SEIZE chan1f
+	DEPART chan1q
+	TEST E X$turbomode,0,chan1fast
+chan1slow	ASSIGN processing_time_1,(exponential(1,2,3))
+	TRANSFER ,chan1ps
+chan1fast	ASSIGN processing_time_1,(exponential(1,2,2))
+chan1ps	ASSIGN processing_time+,P$processing_time_1
+	ADVANCE P$processing_time_1
+	RELEASE chan1f
+chan2ent	QUEUE chan2q
+	SEIZE chan2f
+	DEPART chan2q
+	TEST E X$turbomode,0,chan2fast
+chan2slow	ASSIGN processing_time_2,(exponential(1,2,3))
+	TRANSFER ,chan2ps
+chan2fast	ASSIGN processing_time_2,(exponential(1,2,2))
+chan2ps	ASSIGN processing_time+,P$processing_time_2
+	ADVANCE P$processing_time_2
+	RELEASE chan2f
+
+
+	ASSIGN duration,(AC1 - P$starttime)
+	TABULATE packet_time
+	TABULATE proc_time
+
+	TEST LE P$processing_time,10,error_exit
+
+ok_exit	TRANSFER ,tm_toggle
+
+error_exit	SAVEVALUE deleted+,1
+	TRANSFER ,tm_toggle
+
+tm_toggle	TEST E X$turbomode,0,tm_is_on
+tm_is_off	TEST E ((X$deleted / X$created) > 0.3),1,tm_remains_off
+tm_needs_on	SAVEVALUE turbo_on+,1
+	SAVEVALUE turbomode,1
+	TERMINATE
+tm_remains_off	TERMINATE
+tm_is_on	TEST E ((X$deleted / X$created) > 0.3),0,tm_remains_on
+tm_needs_off	SAVEVALUE turbomode,0
+	TERMINATE
+tm_remains_on	TERMINATE
+
+
+GENERATE 1000
+TERMINATE 1
